@@ -35,10 +35,16 @@ This project demonstrates a **Quiz Application Microservice** communicating with
 * **Service discovery** is enabled using **Eureka Server** to register and locate services dynamically.
 
 ```java
-@FeignClient(name = "QUESTION-SERVICE")
+@FeignClient("QUESTION-MICROSERVICE-APP")
 public interface QuizInterface {
-    @GetMapping("/question-service/questions/quiz/{quizId}")
-    public List<Question> getQuestionsForQuiz(@PathVariable("quizId") Long quizId);
+    @GetMapping("question/generate")
+    public ResponseEntity<List<Integer>> getQuestionsForQuiz(@RequestParam String categoryName, @RequestParam Integer numOfQuestions);
+
+    @PostMapping("question/getQuestions")
+    public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds);
+
+    @PostMapping("question/getScore")
+    public ResponseEntity<Integer> getScore(@RequestBody List<Response> responses);
 }
 ```
 
