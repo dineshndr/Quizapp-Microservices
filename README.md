@@ -1,6 +1,4 @@
-Here’s a structured `README.md` file for your GitHub repository based on your description and typical best practices for microservice-based Java/Spring Boot applications:
 
----
 
 # Quiz Application Microservices
 
